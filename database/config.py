@@ -2,7 +2,8 @@
 # Database name : AlimConfiance
 DATABASE = {
     'host':'localhost', 
-    'user':'postgres', 
-    'password':'postgres', 
+    'user':'postgres',
+    'password':'mdppstg75',# Audrey
+    #'password':'postgres', 
     'port':'5432'
 }

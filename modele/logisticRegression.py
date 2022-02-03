@@ -9,7 +9,7 @@ import numpy as np
 # packages scikit-learn
 import sklearn
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import classification_report, ConfusionMatrixDisplay
+from sklearn.metrics import classification_report, accuracy_score
 from sklearn.model_selection import train_test_split
 print(sklearn.__version__)
 from sklearn import preprocessing
@@ -24,8 +24,10 @@ dataset=pd.read_csv('modele/data/clean/AlimConfiance_BDD_Clean.csv', sep=";")
 # visualisation du jeu de données
 print(dataset.head())
 
-#dataset.drop('agrement', axis=1, inplace=True)
-#dataset.drop('id_etablissement', axis=1, inplace=True)
+dataset.drop('agrement', axis=1, inplace=True)
+dataset.drop('id_etablissement', axis=1, inplace=True)
+
+print(dataset.head(3))
 
 """ 3.SEPARATION DU DATASET EN TRAIN ET TEST SET """
 # Définition des variables : indépendantes/ dependantes
@@ -36,7 +38,6 @@ X_tn, X_tt, y_tn, y_tt = train_test_split(X, y, test_size=300, random_state=0, s
 print('\ntrain sets size :\n',X_tn.shape, y_tn.shape,'\ntest sets size :\n',X_tn.shape, y_tn.shape )
 print('\ntrain set :\n',y_tn.value_counts())
 
-print(dataset.head())
 
 """ 4.EQUILIBRAGE DES DONNEES DE TRAIN """
 smote = SMOTE(sampling_strategy='auto', random_state=0, k_neighbors=7)
@@ -45,7 +46,7 @@ print('\ntrain sets over-sampled sizes :\n',X_tn_smote.shape, y_tn_smote.shape,'
 print('\ntarget train set over-sampled :\n',y_tn_smote.value_counts(),'\n')
 print(X_tn_smote.describe())
 
-""" 4.STANDARDISATION DES DONNEES D'ENTREE"""
+""" 4.STANDARDISATION DES DONNEES D'ENTREE """
 # Instanciation
 scaler = preprocessing.StandardScaler()
 scaler.fit(X_tn_smote)

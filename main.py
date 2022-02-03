@@ -12,4 +12,4 @@ if __name__ == "__main__":
     app.run()
 
 # Modele Regression Logistique
-#exec(open("modele/logisticRegression.py",'r').read())
+#exec(open("modele/LogisticRegression.py",'r').read())

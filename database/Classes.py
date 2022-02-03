@@ -1,6 +1,6 @@
 import psycopg2 as pg
 from . import config
-from .config import DATABASE
+from . config import DATABASE
 
 
 class Connection:
