@@ -6,6 +6,7 @@ from . import db
 import pandas as pd
 from modele.RandomForest import predict
 from database.Classes import Connection
+from flask_sqlalchemy import SQLAlchemy 
 
 views = Blueprint('views', __name__)
 
@@ -43,9 +44,9 @@ def estimation():
         code_postal = request.form.get('code_postal')
         type_activite = request.form.get('type_activite')
 
-        for activity in activites :
-            if activity[0] == int(libelle_activite):
-                activite_pred = activity[1]
+        for activity in activites:
+            if activity[0]==int(libelle_activite):
+                activit_pred=activity[1]
         # niveau_hygiene= ['Très satisfaisant','Satisfaisant','A améliorer','A corriger de manière urgente']
         # niveau_hygiene=(random.choice(niveau_hygiene))
         # new_estimation = Estimation(result=(libelle+' ('+siret+') '+': '+niveau_hygiene), user_id=current_user.id)
@@ -58,7 +59,12 @@ def estimation():
         for niveau in niveau_hygiene:
             if new_output==niveau[0]:
                 niveau_textuel=niveau[1]
+        
+        new_estimation = Estimation(result=(libelle+' ('+siret+') '+': '+niveau_textuel), user_id=current_user.id)
+        db = SQLAlchemy()
+        db.session.add(new_estimation)
+        db.session.commit()
         # summarize input and output
         # print(new_input, new_output)
-        return render_template("views/estimation.html",libelle=libelle,siret=siret,libelle_activite=activite_pred,niveau_hygiene=niveau_textuel, user=current_user)
+        return render_template("views/estimation.html",libelle=libelle,siret=siret,libelle_activite=activit_pred,niveau_hygiene=niveau_textuel, user=current_user)
     return render_template("views/add_etablissement.html", user=current_user, activites=activites, types=types)
