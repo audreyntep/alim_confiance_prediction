@@ -2,15 +2,15 @@
 
 L'IA au service de la sécurité alimentaire Groupe 4 Simplon
 
-## Pré-requis :
+## Configuration :
 
-- Utiliser un serveur POSTGRES
+- Utilisation d'un serveur PostGres SQL
 
-- Créer une database 'AlimConfiance'
+- Création d'une base de données 'AlimConfiance'
 
-- Modifier le fichier "config.py"
+- Modification du fichier "config.py"
 
-- Installer les librairies : pip install -r requirements.txt
+- Installation des librairies : pip install -r requirements.txt
 
 ## Lancement :
 
