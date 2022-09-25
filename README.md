@@ -1,6 +1,10 @@
 # IASecuAlim
 
-L'IA au service de la sécurité alimentaire Groupe 4 Simplon
+L'IA au service de la sécurité alimentaire.
+
+## Objectif :
+
+Prédire la notation d'un établissement soumis aux contrôles officiels réalisés en matière de sécurité sanitaire des aliments depuis le 1er mars 2017.
 
 ## Configuration :
 
